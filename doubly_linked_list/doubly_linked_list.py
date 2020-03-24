@@ -52,25 +52,56 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
-        pass
+        new_head = ListNode(value, next = self.head)
+        if self.length >= 1:
+            self.head.prev = new_head #adjust old head back pointer
+        self.head = new_head
+        self.length += 1
+        if self.length == 1:
+            self.tail = self.head
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
-        pass
+        if self.head != None:
+            if self.head.next != None:
+                self.head.next.prev = None
+                self.head = self.head.next
+            else:
+                self.head = None
+                self.tail = None
+            self.length -= 1
+            if self.length == 1:
+                self.tail = self.head
+
+            return self.length
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
     the old tail node's next pointer accordingly."""
     def add_to_tail(self, value):
-        pass
+        new_tail = ListNode(value, prev = self.tail)
+        if self.length >= 1:
+            self.tail.next = new_tail
+        self.tail = new_tail
+        self.length += 1
+        if self.length == 1:
+            self.head = self.tail
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        pass
+        if self.tail != None:
+            if self.tail.prev != None:                
+                self.tail = self.tail.prev
+                self.tail.prev.next = None
+            else:
+                self.tail = None
+            self.length -= 1
+            if self.length == 1:
+                self.head = self.tail
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
