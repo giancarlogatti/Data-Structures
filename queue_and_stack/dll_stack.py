@@ -7,6 +7,9 @@ class Stack:
         # Why is our DLL a good choice to store our elements?
         self.storage = DoublyLinkedList()
 
+    def peek(self):
+        return self.storage.head.value
+
     def push(self, value):
         return self.storage.add_to_head(value)
 

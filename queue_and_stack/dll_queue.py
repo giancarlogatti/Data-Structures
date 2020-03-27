@@ -11,6 +11,9 @@ class Queue:
     def enqueue(self, value):
         #adding elements to back of queue
         return self.storage.add_to_tail(value)
+    
+    def peek(self):
+        return self.storage.head.value
 
     def dequeue(self):
         return self.storage.remove_from_head()
